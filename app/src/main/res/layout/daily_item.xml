@@ -23,6 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="189dp"
                 android:scaleType="centerCrop"
+                android:transitionName="@string/transitionImage"
                 app:layout_constraintDimensionRatio="16:9"
                 android:src="@mipmap/super_blue_blood_moon"/>
         </android.support.constraint.ConstraintLayout>

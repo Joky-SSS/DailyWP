@@ -20,7 +20,7 @@ public class DailyImage {
      * bot : 1
      * hs : []
      */
-
+    private String title;
     private String startdate;
     private String fullstartdate;
     private String enddate;
@@ -35,6 +35,14 @@ public class DailyImage {
     private int top;
     private int bot;
     private List<?> hs;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public String getStartdate() { return startdate;}
 
@@ -91,4 +99,5 @@ public class DailyImage {
     public List<?> getHs() { return hs;}
 
     public void setHs(List<?> hs) { this.hs = hs;}
+
 }
