@@ -1,0 +1,2 @@
+# DailyWP
+Bing daily wallpaper
