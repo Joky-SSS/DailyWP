@@ -66,6 +66,7 @@ public class DailyActivity extends AppCompatActivity implements DailyContract.Vi
         DailyImage image = mImageList.get(position);
         View targetView = itemView.findViewById(R.id.daily_img);
         Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra("name",image.getHsh());
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             ActivityOptions compat = ActivityOptions.makeSceneTransitionAnimation(this, targetView, getString(R.string.transitionImage));
             ActivityCompat.startActivity(this, intent, compat.toBundle());

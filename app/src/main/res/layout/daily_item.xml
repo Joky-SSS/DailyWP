@@ -6,8 +6,8 @@
     android:layout_margin="8dp"
     android:clickable="true"
     android:foreground="?selectableItemBackgroundBorderless"
-    app:cardElevation="4dp"
-    app:cardCornerRadius="6dp">
+    app:cardCornerRadius="6dp"
+    app:cardElevation="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,18 +15,13 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <android.support.constraint.ConstraintLayout
+        <ImageView
+            android:id="@+id/daily_img"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageView
-                android:id="@+id/daily_img"
-                android:layout_width="match_parent"
-                android:layout_height="189dp"
-                android:scaleType="centerCrop"
-                android:transitionName="@string/transitionImage"
-                app:layout_constraintDimensionRatio="16:9"
-                android:src="@mipmap/super_blue_blood_moon"/>
-        </android.support.constraint.ConstraintLayout>
+            android:layout_height="195dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/super_blue_blood_moon"
+            android:transitionName="@string/transitionImage" />
 
         <TextView
             android:id="@+id/title"
@@ -35,9 +30,9 @@
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
             android:layout_marginTop="12dp"
-            android:textColor="@color/primary_text"
             android:text="波士顿美术馆"
-            android:textSize="18sp"/>
+            android:textColor="@color/primary_text"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/copyright"
@@ -46,20 +41,20 @@
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
             android:layout_marginTop="8dp"
-            android:textColor="@color/secondary_text"
             android:text="波士顿美术馆收藏的画家温斯洛·霍默的水彩画'Rocky Shore' (© Alamy)"
-            android:textSize="14sp"/>
+            android:textColor="@color/secondary_text"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="12dp"
-            android:textColor="@color/secondary_text"
             android:text="2018-07-27"
-            android:textSize="13sp"/>
+            android:textColor="@color/secondary_text"
+            android:textSize="13sp" />
     </LinearLayout>
 </android.support.v7.widget.CardView>
