@@ -13,7 +13,8 @@
         android:src="@mipmap/super_blue_blood_moon"
         android:layout_centerInParent="true"
         android:scaleType="fitCenter"
-        android:transitionName="@string/transitionImage"/>
+        android:transitionName="@string/transitionImage"
+        />
 
     <com.jokyxray.dailywp.widget.zoomview.PhotoView
         android:id="@+id/daily_img"
@@ -22,5 +23,6 @@
         android:scaleType="fitCenter"
         android:background="@android:color/transparent"
         android:src="@mipmap/super_blue_blood_moon"
+
         />
 </RelativeLayout>
