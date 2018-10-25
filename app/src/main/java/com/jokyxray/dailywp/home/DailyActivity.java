@@ -7,7 +7,6 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -73,6 +72,7 @@ public class DailyActivity extends AppCompatActivity implements DailyContract.Vi
         View targetView = itemView.findViewById(R.id.daily_img);
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra("name",image.getHsh());
+        intent.putExtra("title", image.getTitle());
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             ActivityOptions compat = ActivityOptions.makeSceneTransitionAnimation(this, targetView, getString(R.string.transitionImage));
             ActivityCompat.startActivity(this, intent, compat.toBundle());
@@ -86,10 +86,5 @@ public class DailyActivity extends AppCompatActivity implements DailyContract.Vi
         if(!PermissionHelper.isGranted(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)){
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE},REQUESTCODE_PERMISSION );
         }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }
