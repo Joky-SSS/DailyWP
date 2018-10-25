@@ -46,7 +46,11 @@ public class DetailActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        transition.postDelayed(()->transition.setVisibility(View.INVISIBLE),500);
+        picture.setVisibility(View.INVISIBLE);
+        transition.postDelayed(()->{
+            transition.setVisibility(View.INVISIBLE);
+            picture.setVisibility(View.VISIBLE);
+        },500);
     }
 
     @Override

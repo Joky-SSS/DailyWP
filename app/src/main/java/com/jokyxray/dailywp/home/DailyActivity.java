@@ -1,9 +1,13 @@
 package com.jokyxray.dailywp.home;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,12 +18,13 @@ import android.view.View;
 import com.jokyxray.dailywp.R;
 import com.jokyxray.dailywp.detail.DetailActivity;
 import com.jokyxray.dailywp.model.DailyImage;
+import com.jokyxray.dailywp.uitls.PermissionHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DailyActivity extends AppCompatActivity implements DailyContract.View,DailyAdapter.OnItemClickListener{
-
+    static int REQUESTCODE_PERMISSION = 1001;
     DailyPresenter mPresenter;
     Toolbar mToolbar;
     RecyclerView mDailyView;
@@ -33,6 +38,7 @@ public class DailyActivity extends AppCompatActivity implements DailyContract.Vi
         mPresenter = new DailyPresenter(this);
         initUI();
         mPresenter.loadDailyImage();
+        checkPermission();
     }
 
     private void initUI() {
@@ -73,5 +79,17 @@ public class DailyActivity extends AppCompatActivity implements DailyContract.Vi
         }else{
             startActivity(intent);
         }
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    private void checkPermission() {
+        if(!PermissionHelper.isGranted(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE},REQUESTCODE_PERMISSION );
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }

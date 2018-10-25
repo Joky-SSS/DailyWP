@@ -23,6 +23,15 @@
         android:scaleType="fitCenter"
         android:background="@android:color/transparent"
         android:src="@mipmap/super_blue_blood_moon"
-
+        />
+    <ImageView
+        android:id="@+id/iv_menu"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@mipmap/dot"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="12dp"
         />
 </RelativeLayout>

@@ -1,7 +1,14 @@
 package com.jokyxray.dailywp.model;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
 import java.util.List;
 
+@Entity(indices = { @Index(value = {"enddate"})})
 public class DailyImage {
 
     /**
@@ -20,6 +27,9 @@ public class DailyImage {
      * bot : 1
      * hs : []
      */
+    @NonNull
+    @PrimaryKey
+    private String hsh;
     private String title;
     private String startdate;
     private String fullstartdate;
@@ -29,11 +39,15 @@ public class DailyImage {
     private String copyright;
     private String copyrightlink;
     private String quiz;
+    @Ignore
     private boolean wp;
-    private String hsh;
+    @Ignore
     private int drk;
+    @Ignore
     private int top;
+    @Ignore
     private int bot;
+    @Ignore
     private List<?> hs;
 
     public String getTitle() {
