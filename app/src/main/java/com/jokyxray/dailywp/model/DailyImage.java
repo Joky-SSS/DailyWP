@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 
 import java.util.List;
 
-@Entity(indices = { @Index(value = {"enddate"})})
+@Entity(indices = { @Index(value = {"sort"})})
 public class DailyImage {
 
     /**
@@ -39,6 +39,7 @@ public class DailyImage {
     private String copyright;
     private String copyrightlink;
     private String quiz;
+    private int sort;
     @Ignore
     private boolean wp;
     @Ignore
@@ -114,4 +115,11 @@ public class DailyImage {
 
     public void setHs(List<?> hs) { this.hs = hs;}
 
+    public int getSort() {
+        return sort;
+    }
+
+    public void setSort(int sort) {
+        this.sort = sort;
+    }
 }

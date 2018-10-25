@@ -2,6 +2,8 @@ package com.jokyxray.dailywp.home;
 
 import android.net.Uri;
 
+import com.jokyxray.dailywp.dao.AppDatabase;
+import com.jokyxray.dailywp.dao.DailyImageDao;
 import com.jokyxray.dailywp.model.DailyImage;
 import com.jokyxray.dailywp.model.DailyModel;
 import com.jokyxray.dailywp.network.APIHelper;
@@ -22,18 +24,24 @@ public class DailyPresenter implements DailyContract.Presenter {
 
     DailyContract.View mView;
     DailyRepository repository = new DailyRepository();
-
+    DailyImageDao imageDao;
     public DailyPresenter(DailyContract.View mView) {
         this.mView = mView;
+        imageDao = AppDatabase.get(mView.getActivity()).dailyDao();
     }
 
     @Override
     public void loadDailyImage() {
+
+
         repository.getDailyImages().flatMap((Function<DailyModel, ObservableSource<DailyImage>>) dailyModel -> Observable.fromIterable(dailyModel.getImages()))
         .doOnNext(dailyImage -> {
             Uri uri = Uri.parse(dailyImage.getCopyrightlink());
             String q = uri.getQueryParameter("q");
             dailyImage.setTitle(q);
+            String hsh = imageDao.getHsh(dailyImage.getHsh());
+            if(hsh == null)
+                imageDao.insertDailyImage(dailyImage);
             if(!checkImage(dailyImage.getHsh())){
                 downloadImage(dailyImage.getUrl(),dailyImage.getHsh());
             }
